@@ -195,4 +195,38 @@ class SpringbootMybatisIntroApplicationTests {
 
 ![image-20240601215948969](C:\Users\tyx\AppData\Roaming\Typora\typora-user-images\image-20240601215948969.png)
 
-- 红色标注的注解使用频次较多
+- **红色标注的注解使用频次较多**
+
+
+
+## 5、增删改查
+
+**主要通过XML配置文件来实现增删改查**
+
+#### 5.1 通过注解
+
+- 使用Spring与MyBatis整合，即把mybatis数据源的配置、事务的管理、SqlSessionFactory的创建以及数据映射器接口Mapper的创建交由spring去管理”，所以mybatis的配置文件mybatis-config.xml中**不需要再配置数据源及事务**，在业务层service实现时不需要**手动地获取SqlSession以及对应的数据映射器接口Mapper**，通过**spring的注入**即可
+
+
+
+
+
+#### 5.2 通过XML配置文件
+
+
+
+
+
+
+
+## 6、 动态Sql
+
+#### 6.1  # 和 $的区别
+
+- 前者传入的参数会**自动加一个双引号**，因此在**Sql中显示为字符串**，而后者则直接传入，在Sql中会直接显示参数。
+- 前者传入参数时，会使用**参数占位符（即“?”）**，因此更加安全，可以防止Sql注入，而后者不行
+- **$**方式一般用于**传入数据库对象**，例如传入表名
+- 综上，大多数情况使用前者，即  **#** ，它更加安全和高效（编译次数更少），但有些情况必须使用**$**，例：**MyBatis排序时使用order by 动态参数时需要注意**，**用$而不是#**。
+
+
+
